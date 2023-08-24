@@ -39,10 +39,10 @@
             txtBxAccNmbr = new TextBox();
             cstGrdView = new DataGridView();
             groupBox2 = new GroupBox();
-            button3 = new Button();
-            button4 = new Button();
-            dateTimePicker1 = new DateTimePicker();
-            textBox4 = new TextBox();
+            rmvInvc = new Button();
+            btnAddInvc = new Button();
+            invDatePkr = new DateTimePicker();
+            txtPwrUsg = new TextBox();
             label6 = new Label();
             label5 = new Label();
             invcGrdView = new DataGridView();
@@ -167,10 +167,10 @@
             // groupBox2
             // 
             groupBox2.BackColor = SystemColors.Window;
-            groupBox2.Controls.Add(button3);
-            groupBox2.Controls.Add(button4);
-            groupBox2.Controls.Add(dateTimePicker1);
-            groupBox2.Controls.Add(textBox4);
+            groupBox2.Controls.Add(rmvInvc);
+            groupBox2.Controls.Add(btnAddInvc);
+            groupBox2.Controls.Add(invDatePkr);
+            groupBox2.Controls.Add(txtPwrUsg);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(invcGrdView);
@@ -183,47 +183,49 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Invoices List:";
             // 
-            // button3
+            // rmvInvc
             // 
-            button3.BackColor = SystemColors.Info;
-            button3.ForeColor = SystemColors.Highlight;
-            button3.Location = new Point(296, 605);
-            button3.Name = "button3";
-            button3.Size = new Size(175, 49);
-            button3.TabIndex = 10;
-            button3.Text = "Remove Invoice";
-            button3.UseVisualStyleBackColor = false;
+            rmvInvc.BackColor = SystemColors.Info;
+            rmvInvc.ForeColor = SystemColors.Highlight;
+            rmvInvc.Location = new Point(424, 605);
+            rmvInvc.Name = "rmvInvc";
+            rmvInvc.Size = new Size(175, 49);
+            rmvInvc.TabIndex = 10;
+            rmvInvc.Text = "Remove Invoice";
+            rmvInvc.UseVisualStyleBackColor = false;
+            rmvInvc.Click += rmvInvc_Click;
             // 
-            // button4
+            // btnAddInvc
             // 
-            button4.BackColor = SystemColors.Info;
-            button4.ForeColor = SystemColors.Highlight;
-            button4.Location = new Point(23, 605);
-            button4.Name = "button4";
-            button4.Size = new Size(175, 49);
-            button4.TabIndex = 9;
-            button4.Text = "Add Invoice";
-            button4.UseVisualStyleBackColor = false;
+            btnAddInvc.BackColor = SystemColors.Info;
+            btnAddInvc.ForeColor = SystemColors.Highlight;
+            btnAddInvc.Location = new Point(23, 605);
+            btnAddInvc.Name = "btnAddInvc";
+            btnAddInvc.Size = new Size(175, 49);
+            btnAddInvc.TabIndex = 9;
+            btnAddInvc.Text = "Add Invoice";
+            btnAddInvc.UseVisualStyleBackColor = false;
+            btnAddInvc.Click += btnAddInvc_Click;
             // 
-            // dateTimePicker1
+            // invDatePkr
             // 
-            dateTimePicker1.CalendarForeColor = SystemColors.Highlight;
-            dateTimePicker1.CalendarMonthBackground = SystemColors.Info;
-            dateTimePicker1.CalendarTitleBackColor = SystemColors.Info;
-            dateTimePicker1.CalendarTitleForeColor = SystemColors.Highlight;
-            dateTimePicker1.CalendarTrailingForeColor = SystemColors.Highlight;
-            dateTimePicker1.Location = new Point(273, 86);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 32);
-            dateTimePicker1.TabIndex = 5;
+            invDatePkr.CalendarForeColor = SystemColors.Highlight;
+            invDatePkr.CalendarMonthBackground = SystemColors.Info;
+            invDatePkr.CalendarTitleBackColor = SystemColors.Info;
+            invDatePkr.CalendarTitleForeColor = SystemColors.Highlight;
+            invDatePkr.CalendarTrailingForeColor = SystemColors.Highlight;
+            invDatePkr.Location = new Point(273, 86);
+            invDatePkr.Name = "invDatePkr";
+            invDatePkr.Size = new Size(200, 32);
+            invDatePkr.TabIndex = 5;
             // 
-            // textBox4
+            // txtPwrUsg
             // 
-            textBox4.BackColor = SystemColors.Info;
-            textBox4.Location = new Point(273, 55);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(200, 32);
-            textBox4.TabIndex = 4;
+            txtPwrUsg.BackColor = SystemColors.Info;
+            txtPwrUsg.Location = new Point(273, 55);
+            txtPwrUsg.Name = "txtPwrUsg";
+            txtPwrUsg.Size = new Size(200, 32);
+            txtPwrUsg.TabIndex = 4;
             // 
             // label6
             // 
@@ -339,12 +341,12 @@
         private Label label5;
         private TextBox txtBxLstNm;
         private TextBox txtBxFrstNm;
-        private DateTimePicker dateTimePicker1;
-        private TextBox textBox4;
+        private DateTimePicker invDatePkr;
+        private TextBox txtPwrUsg;
         private Button btnAddCstmr;
         private Button rmvCstmr;
-        private Button button3;
-        private Button button4;
+        private Button rmvInvc;
+        private Button btnAddInvc;
         private Button clsBtn;
         private Button btnclose;
     }
