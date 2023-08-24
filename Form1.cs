@@ -53,15 +53,12 @@ namespace Lab_3
                 else
                 {
                     int accNo = Convert.ToInt32(accountNo);
-                    //bool isIdUnique = checkUniqueness(accNo);
-                    bool isIdUnique = true;
+                    bool isIdUnique = checkUniqueness(accNo);
                     if (isIdUnique)
                     {
                         currentCustomer.AccountNumber = accNo;
                         currentCustomer.FirstName = fName;
                         currentCustomer.LastName = lName;
-                        //Invoice inv = new Invoice();
-                        //inv.AccountNumber = accNo;
                     }
 
                     else

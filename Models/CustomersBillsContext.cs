@@ -25,6 +25,11 @@ public partial class CustomersBillsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Customer>(entity =>
+        {
+            entity.Property(e => e.AccountNumber).ValueGeneratedNever();
+        });
+
         modelBuilder.Entity<Invoice>(entity =>
         {
             entity.HasOne(d => d.AccountNumberNavigation).WithMany(p => p.Invoices).HasConstraintName("FK_Invoices_Customers");

@@ -16,45 +16,51 @@ namespace Lab_3.Models
 
         // -------------------------------- 1st constructor method: --------------------------------
 
-        //public Invoice(int accNo, decimal pwrUsg, DateOnly date)
-        //{
-        //    AccountNumber = accNo;
-        //    PowerUsage = pwrUsg;
-        //    InvoiceTotal = CalculateCharge();
-        //    InvoiceDate = date.ToDateTime(TimeOnly.MinValue);
-        //}
+        public Invoice()
+        {
+        }
 
 
-        //// -------------------------------- 2nd constructor method: --------------------------------
+        // -------------------------------- 2nd constructor method: --------------------------------
 
-        //public Invoice(decimal pwrUsg, DateOnly date)
-        //{
-        //    Guid uniqueId = Guid.NewGuid();
-        //    int hashedValue = Math.Abs(uniqueId.GetHashCode());
+        public Invoice(int accNo, decimal pwrUsg, DateOnly date)
+        {
+            AccountNumber = accNo;
+            PowerUsage = pwrUsg;
+            InvoiceTotal = CalculateCharge();
+            InvoiceDate = date.ToDateTime(TimeOnly.MinValue); 
+        }
 
-        //    AccountNumber = hashedValue;
-        //    PowerUsage = pwrUsg;
-        //    InvoiceTotal = CalculateCharge();
-        //    InvoiceDate = date.ToDateTime(TimeOnly.MinValue);
-        //}
+
+        // -------------------------------- 3rd constructor method: --------------------------------
+
+        public Invoice(decimal pwrUsg, DateOnly date)
+        {
+            Guid uniqueId = Guid.NewGuid();
+            int hashedValue = Math.Abs(uniqueId.GetHashCode());
+
+            AccountNumber = hashedValue;
+            PowerUsage = pwrUsg;
+            InvoiceTotal = CalculateCharge();
+        }
 
 
         // -------------------------------- calculate cost method: --------------------------------
 
-        //private decimal CalculateCharge()
-        //{
-        //    decimal powerCost = 0;
-        //    powerCost = kwhCost * PowerUsage + adminFee;
-        //    return powerCost;
-        //}
+        private decimal CalculateCharge()
+        {
+            decimal powerCost = 0;
+            powerCost = kwhCost * PowerUsage + adminFee;
+            return powerCost;
+        }
 
 
         // ------------------ calculate ToString method (method for MessageBox): ------------------
 
-        //public override string ToString()
-        //{
-        //    string billString = CalculateCharge().ToString("C");
-        //    return $"Add account no. {AccountNumber} with a bill of {billString}";
-        //}
+        public override string ToString()
+        {
+            string billString = CalculateCharge().ToString("C");
+            return $"Add account no. {AccountNumber} with a bill of {billString}";
+        }
     }
 }

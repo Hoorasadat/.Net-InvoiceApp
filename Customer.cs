@@ -8,27 +8,35 @@ namespace Lab_3.Models
 {
     public partial class Customer
     {
+
         // -------------------------------- 1st constructor method: --------------------------------
 
-        //public Customer(int accNo, string fstNm, string lstNm)
-        //{
-        //    AccountNumber = accNo;
-        //    FirstName = fstNm;
-        //    LastName = lstNm;
-        //}
+        public Customer()
+        {
+        }
 
 
-        //// -------------------------------- 2nd constructor method: --------------------------------
+        // -------------------------------- 2nd constructor method: --------------------------------
 
-        //public Customer(string fstNm, string lstNm)
-        //{
-        //    Guid uniqueId = Guid.NewGuid();
-        //    int hashedValue = Math.Abs(uniqueId.GetHashCode());
+        public Customer(int accNo, string fstNm, string lstNm)
+        {
+            AccountNumber = accNo;
+            FirstName = fstNm;
+            LastName = lstNm;
+        }
 
-        //    AccountNumber = hashedValue;
-        //    FirstName = fstNm;
-        //    LastName = lstNm;
-        //}
+
+        // -------------------------------- 2nd constructor method: --------------------------------
+
+        public Customer(string fstNm, string lstNm)
+        {
+            Guid uniqueId = Guid.NewGuid();
+            int hashedValue = Math.Abs(uniqueId.GetHashCode());
+
+            AccountNumber = hashedValue;
+            FirstName = fstNm;
+            LastName = lstNm;
+        }
 
 
         // ------------------ calculate ToString method (method for MessageBox): ------------------
