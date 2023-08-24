@@ -1,4 +1,6 @@
 using Lab_3.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Windows.Forms;
 
 
 namespace Lab_3
@@ -16,12 +18,39 @@ namespace Lab_3
         public Form1()
         {
             InitializeComponent();
-
+            populateCustomerGridView();
+            populateInvoiceGridView();
             //ResetStatistics();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
+
+
+        // --------------------------- Populate the cutomer grid view: ---------------------------
+
+        private void populateCustomerGridView()
+        {
+            var context = new CustomersBillsContext();
+            List<Customer> customersList = new List<Customer>();
+            customerList = context.Customers.ToList<Customer>();
+            cstGrdView.DataSource = null;
+            cstGrdView.DataSource = customerList;
+
+        }
+
+
+        // --------------------------- Populate the cutomer grid view: ---------------------------
+
+        private void populateInvoiceGridView()
+        {
+            var context = new CustomersBillsContext();
+            List<Invoice> invoiceList = new List<Invoice>();
+            invoiceList = context.Invoices.ToList<Invoice>();
+            invcGrdView.DataSource = null;
+            invcGrdView.DataSource = invoiceList;
+
         }
 
 
@@ -44,11 +73,11 @@ namespace Lab_3
 
                 if (accountNo == "")
                 {
-                    currentCustomer.FirstName = fName; 
+                    currentCustomer.FirstName = fName;
                     currentCustomer.LastName = lName;
 
                 }
-                    
+
 
                 else
                 {
@@ -110,6 +139,29 @@ namespace Lab_3
             txtBxAccNmbr.Text = "";
             txtBxFrstNm.Text = "";
             txtBxLstNm.Text = "";
+        }
+
+        private void btnclose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void rmvCstmr_Click(object sender, EventArgs e)
+        {
+            var context = new CustomersBillsContext();
+            int selectedRowIndex = cstGrdView.SelectedCells[0].RowIndex;
+            int accountNumber = Convert.ToInt32(cstGrdView.Rows[selectedRowIndex].Cells["AccountNumber"].Value);
+            Customer customerToDelete = context.Customers.FirstOrDefault(c => c.AccountNumber == accountNumber);
+            if (customerToDelete != null)
+            {
+                if (MessageBox.Show("Are you Sure?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    context.Customers.Remove(customerToDelete);
+                    context.SaveChanges();
+                    populateCustomerGridView();
+                    populateInvoiceGridView();
+                }
+            }
         }
     }
 }

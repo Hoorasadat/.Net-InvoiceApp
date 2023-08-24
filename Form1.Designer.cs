@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            button2 = new Button();
+            rmvCstmr = new Button();
             btnAddCstmr = new Button();
             txtBxLstNm = new TextBox();
             txtBxFrstNm = new TextBox();
@@ -37,7 +37,7 @@
             label3 = new Label();
             label2 = new Label();
             txtBxAccNmbr = new TextBox();
-            dataGridView1 = new DataGridView();
+            cstGrdView = new DataGridView();
             groupBox2 = new GroupBox();
             button3 = new Button();
             button4 = new Button();
@@ -45,20 +45,22 @@
             textBox4 = new TextBox();
             label6 = new Label();
             label5 = new Label();
-            dataGridView2 = new DataGridView();
+            invcGrdView = new DataGridView();
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            clsBtn = new Button();
+            btnclose = new Button();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cstGrdView).BeginInit();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)invcGrdView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.Window;
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(rmvCstmr);
             groupBox1.Controls.Add(btnAddCstmr);
             groupBox1.Controls.Add(txtBxLstNm);
             groupBox1.Controls.Add(txtBxFrstNm);
@@ -66,7 +68,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtBxAccNmbr);
-            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Controls.Add(cstGrdView);
             groupBox1.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.ForeColor = SystemColors.Desktop;
             groupBox1.Location = new Point(-1, 147);
@@ -76,16 +78,17 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Customers List:";
             // 
-            // button2
+            // rmvCstmr
             // 
-            button2.BackColor = SystemColors.Info;
-            button2.ForeColor = SystemColors.Highlight;
-            button2.Location = new Point(293, 605);
-            button2.Name = "button2";
-            button2.Size = new Size(175, 49);
-            button2.TabIndex = 8;
-            button2.Text = "Remove Customer";
-            button2.UseVisualStyleBackColor = false;
+            rmvCstmr.BackColor = SystemColors.Info;
+            rmvCstmr.ForeColor = SystemColors.Highlight;
+            rmvCstmr.Location = new Point(293, 605);
+            rmvCstmr.Name = "rmvCstmr";
+            rmvCstmr.Size = new Size(175, 49);
+            rmvCstmr.TabIndex = 8;
+            rmvCstmr.Text = "Remove Customer";
+            rmvCstmr.UseVisualStyleBackColor = false;
+            rmvCstmr.Click += rmvCstmr_Click;
             // 
             // btnAddCstmr
             // 
@@ -150,16 +153,16 @@
             txtBxAccNmbr.Size = new Size(181, 32);
             txtBxAccNmbr.TabIndex = 1;
             // 
-            // dataGridView1
+            // cstGrdView
             // 
-            dataGridView1.AllowUserToOrderColumns = true;
-            dataGridView1.BackgroundColor = SystemColors.Info;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 156);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(482, 437);
-            dataGridView1.TabIndex = 0;
+            cstGrdView.AllowUserToOrderColumns = true;
+            cstGrdView.BackgroundColor = SystemColors.Info;
+            cstGrdView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            cstGrdView.Location = new Point(6, 156);
+            cstGrdView.Name = "cstGrdView";
+            cstGrdView.RowTemplate.Height = 25;
+            cstGrdView.Size = new Size(482, 437);
+            cstGrdView.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -170,12 +173,12 @@
             groupBox2.Controls.Add(textBox4);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(dataGridView2);
+            groupBox2.Controls.Add(invcGrdView);
             groupBox2.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox2.ForeColor = SystemColors.Desktop;
             groupBox2.Location = new Point(623, 147);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(494, 667);
+            groupBox2.Size = new Size(623, 667);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Invoices List:";
@@ -240,16 +243,16 @@
             label5.TabIndex = 2;
             label5.Text = "Power Usage:";
             // 
-            // dataGridView2
+            // invcGrdView
             // 
-            dataGridView2.AllowUserToOrderColumns = true;
-            dataGridView2.BackgroundColor = SystemColors.Info;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(6, 156);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(482, 437);
-            dataGridView2.TabIndex = 1;
+            invcGrdView.AllowUserToOrderColumns = true;
+            invcGrdView.BackgroundColor = SystemColors.Info;
+            invcGrdView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            invcGrdView.Location = new Point(6, 156);
+            invcGrdView.Name = "invcGrdView";
+            invcGrdView.RowTemplate.Height = 25;
+            invcGrdView.Size = new Size(611, 437);
+            invcGrdView.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -274,12 +277,34 @@
             label1.TabIndex = 3;
             label1.Text = "Invoice Application";
             // 
+            // clsBtn
+            // 
+            clsBtn.Location = new Point(0, 0);
+            clsBtn.Name = "clsBtn";
+            clsBtn.Size = new Size(75, 23);
+            clsBtn.TabIndex = 0;
+            // 
+            // btnclose
+            // 
+            btnclose.BackColor = SystemColors.Info;
+            btnclose.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnclose.ForeColor = SystemColors.Highlight;
+            btnclose.Location = new Point(1171, 12);
+            btnclose.Name = "btnclose";
+            btnclose.Size = new Size(75, 75);
+            btnclose.TabIndex = 4;
+            btnclose.Text = "Close App";
+            btnclose.UseVisualStyleBackColor = false;
+            btnclose.Click += btnclose_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.blurBG;
-            ClientSize = new Size(1117, 827);
+            ClientSize = new Size(1246, 827);
+            Controls.Add(btnclose);
+            Controls.Add(clsBtn);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Controls.Add(groupBox2);
@@ -289,10 +314,10 @@
             Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cstGrdView).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)invcGrdView).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -304,8 +329,8 @@
         private GroupBox groupBox2;
         private PictureBox pictureBox1;
         private Label label1;
-        private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
+        private DataGridView cstGrdView;
+        private DataGridView invcGrdView;
         private TextBox txtBxAccNmbr;
         private Label label2;
         private Label label4;
@@ -317,8 +342,10 @@
         private DateTimePicker dateTimePicker1;
         private TextBox textBox4;
         private Button btnAddCstmr;
-        private Button button2;
+        private Button rmvCstmr;
         private Button button3;
         private Button button4;
+        private Button clsBtn;
+        private Button btnclose;
     }
 }

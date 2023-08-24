@@ -32,19 +32,6 @@ namespace Lab_3.Models
         }
 
 
-        // -------------------------------- 3rd constructor method: --------------------------------
-
-        public Invoice(decimal pwrUsg, DateOnly date)
-        {
-            Guid uniqueId = Guid.NewGuid();
-            int hashedValue = Math.Abs(uniqueId.GetHashCode());
-
-            AccountNumber = hashedValue;
-            PowerUsage = pwrUsg;
-            InvoiceTotal = CalculateCharge();
-        }
-
-
         // -------------------------------- calculate cost method: --------------------------------
 
         private decimal CalculateCharge()
