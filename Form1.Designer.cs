@@ -30,13 +30,13 @@
         {
             groupBox1 = new GroupBox();
             button2 = new Button();
-            button1 = new Button();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            btnAddCstmr = new Button();
+            txtBxLstNm = new TextBox();
+            txtBxFrstNm = new TextBox();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
+            txtBxAccNmbr = new TextBox();
             dataGridView1 = new DataGridView();
             groupBox2 = new GroupBox();
             button3 = new Button();
@@ -59,13 +59,13 @@
             // 
             groupBox1.BackColor = SystemColors.Window;
             groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(btnAddCstmr);
+            groupBox1.Controls.Add(txtBxLstNm);
+            groupBox1.Controls.Add(txtBxFrstNm);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtBxAccNmbr);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.ForeColor = SystemColors.Desktop;
@@ -87,32 +87,33 @@
             button2.Text = "Remove Customer";
             button2.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnAddCstmr
             // 
-            button1.BackColor = SystemColors.Info;
-            button1.ForeColor = SystemColors.Highlight;
-            button1.Location = new Point(24, 605);
-            button1.Name = "button1";
-            button1.Size = new Size(175, 49);
-            button1.TabIndex = 7;
-            button1.Text = "Add Customer";
-            button1.UseVisualStyleBackColor = false;
+            btnAddCstmr.BackColor = SystemColors.Info;
+            btnAddCstmr.ForeColor = SystemColors.Highlight;
+            btnAddCstmr.Location = new Point(24, 605);
+            btnAddCstmr.Name = "btnAddCstmr";
+            btnAddCstmr.Size = new Size(175, 49);
+            btnAddCstmr.TabIndex = 7;
+            btnAddCstmr.Text = "Add Customer";
+            btnAddCstmr.UseVisualStyleBackColor = false;
+            btnAddCstmr.Click += btnAddCstmr_Click;
             // 
-            // textBox3
+            // txtBxLstNm
             // 
-            textBox3.BackColor = SystemColors.Info;
-            textBox3.Location = new Point(291, 113);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(181, 32);
-            textBox3.TabIndex = 6;
+            txtBxLstNm.BackColor = SystemColors.Info;
+            txtBxLstNm.Location = new Point(291, 113);
+            txtBxLstNm.Name = "txtBxLstNm";
+            txtBxLstNm.Size = new Size(181, 32);
+            txtBxLstNm.TabIndex = 6;
             // 
-            // textBox2
+            // txtBxFrstNm
             // 
-            textBox2.BackColor = SystemColors.Info;
-            textBox2.Location = new Point(291, 83);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(181, 32);
-            textBox2.TabIndex = 5;
+            txtBxFrstNm.BackColor = SystemColors.Info;
+            txtBxFrstNm.Location = new Point(291, 83);
+            txtBxFrstNm.Name = "txtBxFrstNm";
+            txtBxFrstNm.Size = new Size(181, 32);
+            txtBxFrstNm.TabIndex = 5;
             // 
             // label4
             // 
@@ -141,13 +142,13 @@
             label2.TabIndex = 2;
             label2.Text = "Account # (optional):";
             // 
-            // textBox1
+            // txtBxAccNmbr
             // 
-            textBox1.BackColor = SystemColors.Info;
-            textBox1.Location = new Point(291, 53);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(181, 32);
-            textBox1.TabIndex = 1;
+            txtBxAccNmbr.BackColor = SystemColors.Info;
+            txtBxAccNmbr.Location = new Point(291, 53);
+            txtBxAccNmbr.Name = "txtBxAccNmbr";
+            txtBxAccNmbr.Size = new Size(181, 32);
+            txtBxAccNmbr.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -305,17 +306,17 @@
         private Label label1;
         private DataGridView dataGridView1;
         private DataGridView dataGridView2;
-        private TextBox textBox1;
+        private TextBox txtBxAccNmbr;
         private Label label2;
         private Label label4;
         private Label label3;
         private Label label6;
         private Label label5;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox txtBxLstNm;
+        private TextBox txtBxFrstNm;
         private DateTimePicker dateTimePicker1;
         private TextBox textBox4;
-        private Button button1;
+        private Button btnAddCstmr;
         private Button button2;
         private Button button3;
         private Button button4;
