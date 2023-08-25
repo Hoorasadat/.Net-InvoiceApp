@@ -152,6 +152,7 @@
             txtBxAccNmbr.Name = "txtBxAccNmbr";
             txtBxAccNmbr.Size = new Size(181, 32);
             txtBxAccNmbr.TabIndex = 1;
+            txtBxAccNmbr.TextChanged += txtBxAccNmbr_TextChanged;
             // 
             // cstGrdView
             // 
@@ -226,6 +227,7 @@
             txtPwrUsg.Name = "txtPwrUsg";
             txtPwrUsg.Size = new Size(200, 32);
             txtPwrUsg.TabIndex = 4;
+            txtPwrUsg.TextChanged += txtPwrUsg_TextChanged;
             // 
             // label6
             // 

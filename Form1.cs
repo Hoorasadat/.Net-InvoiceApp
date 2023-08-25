@@ -239,7 +239,7 @@ namespace Lab_3
             else
             {
                 DateOnly invDate = new DateOnly(invDateTime.Year, invDateTime.Month, invDateTime.Day);
-                
+
                 // --------------- Getting power usage amount and round it in the textbox: ---------------
 
                 decimal powerUsg = Math.Round(Convert.ToDecimal(pwUsg), 2);
@@ -264,12 +264,30 @@ namespace Lab_3
                     MessageBox.Show("You should select a customer!");
                     return;
                 }
-              
+
 
                 // --------------------- Updating statistics and reseting the form: ---------------------
 
                 //updateStatistics();
                 ResetFields();
+            }
+        }
+
+        private void txtBxAccNmbr_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtBxAccNmbr.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                txtBxAccNmbr.Text = txtBxAccNmbr.Text.Remove(txtBxAccNmbr.Text.Length - 1);
+            }
+        }
+
+        private void txtPwrUsg_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtPwrUsg.Text, "[^0-9.]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                txtPwrUsg.Text = txtPwrUsg.Text.Remove(txtPwrUsg.Text.Length - 1);
             }
         }
     }
