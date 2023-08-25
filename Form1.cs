@@ -38,6 +38,7 @@ namespace Lab_3
             customerList = context.Customers.ToList<Customer>();
             cstGrdView.DataSource = null;
             cstGrdView.DataSource = customerList;
+            cstGrdView.Columns["Invoices"].Visible = false;
 
         }
 
@@ -51,6 +52,7 @@ namespace Lab_3
             invoiceList = context.Invoices.ToList<Invoice>();
             invcGrdView.DataSource = null;
             invcGrdView.DataSource = invoiceList;
+            invcGrdView.Columns["AccountNumberNavigation"].Visible = false;
 
         }
 
