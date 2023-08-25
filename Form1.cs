@@ -12,7 +12,6 @@ namespace Lab_3
         // ------------------------------------- Variables: -------------------------------------
 
         List<Customer> customerList;
-        Customer currentCustomer;
 
 
         // ------------------------------- Initializing the form: -------------------------------
@@ -43,7 +42,7 @@ namespace Lab_3
         }
 
 
-        // --------------------------- Populate the cutomer grid view: ---------------------------
+        // --------------------------- Populate the invoice grid view: ---------------------------
 
         private void populateInvoiceGridView()
         {
@@ -56,7 +55,7 @@ namespace Lab_3
         }
 
 
-        // ------------------------ Create and add a cutomer to the list: ------------------------
+        // ------------------------- Create and add a cutomer to the DB: -------------------------
 
         private void btnAddCstmr_Click(object sender, EventArgs e)
         {
@@ -71,25 +70,20 @@ namespace Lab_3
             else
             {
                 // --------------- Creating a new customer based on the filled textboxes: ---------------
-                currentCustomer = new Customer();
+                Customer currentCustomer;
 
                 if (accountNo == "")
                 {
-                    currentCustomer.FirstName = fName;
-                    currentCustomer.LastName = lName;
+                    currentCustomer = new Customer(fName, lName);
 
                 }
-
-
                 else
                 {
                     int accNo = Convert.ToInt32(accountNo);
                     bool isIdUnique = checkUniqueness(accNo);
                     if (isIdUnique)
                     {
-                        currentCustomer.AccountNumber = accNo;
-                        currentCustomer.FirstName = fName;
-                        currentCustomer.LastName = lName;
+                        currentCustomer = new Customer(accNo, fName, lName);
                     }
 
                     else
@@ -99,22 +93,21 @@ namespace Lab_3
                     }
                 }
 
-                // ----------------------- Showing the new customer in a Showbox: -----------------------
+                // ----------------------- Showing the new customer in a Messagebox: -----------------------
 
                 MessageBox.Show(currentCustomer.ToString());
 
-                // ----------------- Adding the new customer into the listbox and list: -----------------
+                // -------------------------- Adding the new customer into theDB: --------------------------
 
                 var context = new CustomersBillsContext();
                 context.Customers.Add(currentCustomer);
                 context.SaveChanges();
                 context.Dispose();
 
-                //    // --------------------- Updating statistics and reseting the form: ---------------------
+                // ----------------- Updating statistics, gridView and reseting the form: -----------------
 
                 populateCustomerGridView();
                 //    updateStatistics();
-                txtBxAccNmbr.Focus();
                 ResetFields();
             }
         }
@@ -143,6 +136,7 @@ namespace Lab_3
             txtBxFrstNm.Text = "";
             txtBxLstNm.Text = "";
             txtPwrUsg.Text = "";
+            txtBxAccNmbr.Focus();
         }
 
         private void btnclose_Click(object sender, EventArgs e)
@@ -232,11 +226,10 @@ namespace Lab_3
             //context.Dispose();
         }
 
+        // -------------------------- Create and add an invoice to the DB: --------------------------
         private void btnAddInvc_Click(object sender, EventArgs e)
         {
-
             DateTime invDateTime = invDatePkr.Value;
-           
             string pwUsg = txtPwrUsg.Text;
 
             if (pwUsg == "")
@@ -276,7 +269,6 @@ namespace Lab_3
                 // --------------------- Updating statistics and reseting the form: ---------------------
 
                 //updateStatistics();
-                txtBxAccNmbr.Focus();
                 ResetFields();
             }
         }
