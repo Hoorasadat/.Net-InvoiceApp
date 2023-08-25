@@ -32,6 +32,14 @@ namespace Lab_3.Models
         }
 
 
+        public void UpdateInvoice(decimal pwrUsg, DateOnly date)
+        {
+            PowerUsage = pwrUsg;
+            InvoiceDate = date.ToDateTime(TimeOnly.MinValue);
+            InvoiceTotal = CalculateCharge();
+        }
+
+
         // -------------------------------- calculate cost method: --------------------------------
 
         private decimal CalculateCharge()

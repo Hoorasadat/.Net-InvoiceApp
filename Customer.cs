@@ -45,5 +45,11 @@ namespace Lab_3.Models
         {
             return $"Add {FirstName} {LastName} with account no. {AccountNumber}";
         }
+
+
+        public string UpdateCustomer()
+        {
+            return $"Update customer's info with account no. {AccountNumber} to {FirstName} {LastName}";
+        }
     }
 }

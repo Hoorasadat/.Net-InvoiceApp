@@ -130,7 +130,7 @@ namespace Lab_3
         }
 
 
-        // ------------------------------------- Reset method: -------------------------------------
+        // ------------------------------------ Reset method: ------------------------------------
 
         private void ResetFields()
         {
@@ -147,7 +147,7 @@ namespace Lab_3
         }
 
 
-        // ---------------------------- Remove a customer from the DB: -----------------------------
+        // --------------------------- Remove a customer from the DB: ----------------------------
 
         private void rmvCstmr_Click(object sender, EventArgs e)
         {
@@ -170,7 +170,7 @@ namespace Lab_3
         }
 
 
-        // ---------------------------- Remove an invoice from the list: ---------------------------
+        // --------------------------- Remove an invoice from the list: --------------------------
 
         private void rmvInvc_Click(object sender, EventArgs e)
         {
@@ -201,42 +201,10 @@ namespace Lab_3
                     MessageBox.Show("Invalid selected row index.");
                 }
             }
-
-
-            //var context = new CustomersBillsContext();
-
-            //if (invcGrdView.SelectedCells.Count > 0)
-            //{
-            //    int selectedRowIndex = invcGrdView.SelectedCells[0].RowIndex;
-
-            //    if (selectedRowIndex >= 0 && selectedRowIndex < invcGrdView.Rows.Count)
-            //    {
-            //        if (int.TryParse(invcGrdView.Rows[selectedRowIndex].Cells["InvoiceId"].Value?.ToString(), out int invoiceId))
-            //        {
-            //            Invoice invoiceToDelete = context.Invoices.FirstOrDefault(c => c.InvoiceId == invoiceId);
-
-            //            if (invoiceToDelete != null && MessageBox.Show("Are you Sure?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //            {
-            //                context.Invoices.Remove(invoiceToDelete);
-            //                context.SaveChanges();
-            //                populateInvoiceGridView();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Invalid Invoice ID.");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Invalid selected row index.");
-            //    }
-            //}
-
-            //context.Dispose();
         }
 
-        // -------------------------- Create and add an invoice to the DB: -------------------------
+
+        // ------------------------- Create and add an invoice to the DB: ------------------------
 
         private void btnAddInvc_Click(object sender, EventArgs e)
         {
@@ -268,6 +236,7 @@ namespace Lab_3
                     context.Invoices.Add(currentInvoice);
                     context.SaveChanges();
                     context.Dispose();
+                    currentInvoice.ToString();
                     populateInvoiceGridView();
                     updateStatistics();
                 }
@@ -310,6 +279,103 @@ namespace Lab_3
         }
 
 
+        // ------------------------------- Update customer: -------------------------------
+
+        private void updtCstmr_Click(object sender, EventArgs e)
+        {
+            txtBxAccNmbr.Enabled = false;
+            string fName = txtBxFrstNm.Text;
+            string lName = txtBxLstNm.Text;
+
+            var context = new CustomersBillsContext();
+            int selectedRowIndex = cstGrdView.SelectedCells[0].RowIndex;
+            int accountNumber = Convert.ToInt32(cstGrdView.Rows[selectedRowIndex].Cells["AccountNumber"].Value);
+            Customer customerToupdate = context.Customers.FirstOrDefault(c => c.AccountNumber == accountNumber);
+
+            if (fName == "" || lName == "")
+            {
+                MessageBox.Show("You have to enter First Name and Last Name!");
+            }
+            else
+            {
+                // ----------------- Finding the customer based on the filled textboxes: -----------------
+
+                if (customerToupdate != null)
+                {
+                    if (MessageBox.Show("Are you Sure?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        // ----------------- Update the properties of the existing customer: -----------------
+                        customerToupdate.FirstName = fName;
+                        customerToupdate.LastName = lName;
+                        context.SaveChanges();
+                        populateCustomerGridView();
+                        updateStatistics();
+                        ResetFields();
+                    }
+                }
+            }
+            txtBxAccNmbr.Enabled = true;
+            context.Dispose();
+        }
+
+
+        // ------------------------------- Update invoice: -------------------------------
+
+        private void updtInvc_Click(object sender, EventArgs e)
+        {
+            DateTime invDateTime = invDatePkr.Value;
+            string pwUsg = txtPwrUsg.Text;
+
+            if (pwUsg == "")
+            {
+                MessageBox.Show("You have to enter Power Usage!");
+            }
+            else
+            {
+                DateOnly invDate = new DateOnly(invDateTime.Year, invDateTime.Month, invDateTime.Day);
+
+                // --------------- Getting power usage amount and round it in the textbox: ---------------
+
+                decimal powerUsg = Math.Round(Convert.ToDecimal(pwUsg), 2);
+
+                txtPwrUsg.Text = powerUsg.ToString();
+
+                // --------------- Updating the Invoice based on the filled textboxes: ---------------
+
+                if (invcGrdView.SelectedCells.Count > 0)
+                {
+                    int selectedRowIndex = invcGrdView.SelectedCells[0].RowIndex;
+
+                    if (selectedRowIndex >= 0)
+                    {
+                        int invoiceId = Convert.ToInt32(invcGrdView.Rows[selectedRowIndex].Cells["InvoiceId"].Value);
+                        var context = new CustomersBillsContext();
+                        Invoice invoiceToUpdate = context.Invoices.FirstOrDefault(c => c.InvoiceId == invoiceId);
+
+                        if (invoiceToUpdate != null)
+                        {
+                            if (MessageBox.Show("Are you Sure?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+
+                                invoiceToUpdate.UpdateInvoice(powerUsg, invDate);
+                                
+                                context.SaveChanges();
+                                context.Dispose();
+                                populateInvoiceGridView();
+                                updateStatistics();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid selected row index.");
+                    }
+                }
+                ResetFields();
+            }
+        }
+
+
         // ------------------------------- Update statistics method: -------------------------------
 
         private void updateStatistics()
@@ -319,8 +385,6 @@ namespace Lab_3
 
             decimal totalUsage = 0;
             decimal totalBillAmount = 0;
-
-            //------------------------------Update statistics method: -----------------------------
 
             foreach (DataGridViewRow row in invcGrdView.Rows)
             {
@@ -339,15 +403,5 @@ namespace Lab_3
             else
                 txtbAvgBill.Text = 0.ToString("C");
         }
-
-
-        // -------------------------------- Reset Statistics method: --------------------------------
-
-        //private void ResetStatistics()
-        //{
-        //    txtbNoCstm.Text = "0";
-        //    txtbTtlUsg.Text = "0";
-        //    txtbAvgBill.Text = 0.ToString("C");
-        //}
     }
 }

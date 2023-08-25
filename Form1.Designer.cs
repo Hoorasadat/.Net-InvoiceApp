@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            updtCstmr = new Button();
             rmvCstmr = new Button();
             btnAddCstmr = new Button();
             txtBxLstNm = new TextBox();
@@ -57,6 +58,7 @@
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
+            updtInvc = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)cstGrdView).BeginInit();
             groupBox2.SuspendLayout();
@@ -68,6 +70,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.Window;
+            groupBox1.Controls.Add(updtCstmr);
             groupBox1.Controls.Add(rmvCstmr);
             groupBox1.Controls.Add(btnAddCstmr);
             groupBox1.Controls.Add(txtBxLstNm);
@@ -81,16 +84,28 @@
             groupBox1.ForeColor = SystemColors.Desktop;
             groupBox1.Location = new Point(-1, 133);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(495, 667);
+            groupBox1.Size = new Size(580, 667);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Customers List:";
+            // 
+            // updtCstmr
+            // 
+            updtCstmr.BackColor = SystemColors.Info;
+            updtCstmr.ForeColor = SystemColors.Highlight;
+            updtCstmr.Location = new Point(202, 605);
+            updtCstmr.Name = "updtCstmr";
+            updtCstmr.Size = new Size(175, 49);
+            updtCstmr.TabIndex = 9;
+            updtCstmr.Text = "Update Customer";
+            updtCstmr.UseVisualStyleBackColor = false;
+            updtCstmr.Click += updtCstmr_Click;
             // 
             // rmvCstmr
             // 
             rmvCstmr.BackColor = SystemColors.Info;
             rmvCstmr.ForeColor = SystemColors.Highlight;
-            rmvCstmr.Location = new Point(293, 605);
+            rmvCstmr.Location = new Point(399, 605);
             rmvCstmr.Name = "rmvCstmr";
             rmvCstmr.Size = new Size(175, 49);
             rmvCstmr.TabIndex = 8;
@@ -102,7 +117,7 @@
             // 
             btnAddCstmr.BackColor = SystemColors.Info;
             btnAddCstmr.ForeColor = SystemColors.Highlight;
-            btnAddCstmr.Location = new Point(24, 605);
+            btnAddCstmr.Location = new Point(6, 605);
             btnAddCstmr.Name = "btnAddCstmr";
             btnAddCstmr.Size = new Size(175, 49);
             btnAddCstmr.TabIndex = 7;
@@ -176,12 +191,13 @@
             cstGrdView.Location = new Point(6, 156);
             cstGrdView.Name = "cstGrdView";
             cstGrdView.RowTemplate.Height = 25;
-            cstGrdView.Size = new Size(482, 437);
+            cstGrdView.Size = new Size(568, 437);
             cstGrdView.TabIndex = 0;
             // 
             // groupBox2
             // 
             groupBox2.BackColor = SystemColors.Window;
+            groupBox2.Controls.Add(updtInvc);
             groupBox2.Controls.Add(rmvInvc);
             groupBox2.Controls.Add(btnAddInvc);
             groupBox2.Controls.Add(invDatePkr);
@@ -392,6 +408,18 @@
             label7.TabIndex = 0;
             label7.Text = "Number of customers processed:";
             // 
+            // updtInvc
+            // 
+            updtInvc.BackColor = SystemColors.Info;
+            updtInvc.ForeColor = SystemColors.Highlight;
+            updtInvc.Location = new Point(221, 605);
+            updtInvc.Name = "updtInvc";
+            updtInvc.Size = new Size(175, 49);
+            updtInvc.TabIndex = 11;
+            updtInvc.Text = "Update Invoice";
+            updtInvc.UseVisualStyleBackColor = false;
+            updtInvc.Click += updtInvc_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -452,5 +480,7 @@
         private TextBox txtbNoCstm;
         private Label label9;
         private Label label8;
+        private Button updtCstmr;
+        private Button updtInvc;
     }
 }
