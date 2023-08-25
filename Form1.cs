@@ -310,7 +310,6 @@ namespace Lab_3
                         customerToupdate.LastName = lName;
                         context.SaveChanges();
                         populateCustomerGridView();
-                        updateStatistics();
                         ResetFields();
                     }
                 }
