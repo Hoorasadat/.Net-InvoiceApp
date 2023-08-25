@@ -50,11 +50,19 @@
             label1 = new Label();
             clsBtn = new Button();
             btnclose = new Button();
+            groupBox3 = new GroupBox();
+            txtbAvgBill = new TextBox();
+            txtbTtlUsg = new TextBox();
+            txtbNoCstm = new TextBox();
+            label9 = new Label();
+            label8 = new Label();
+            label7 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)cstGrdView).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)invcGrdView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -71,7 +79,7 @@
             groupBox1.Controls.Add(cstGrdView);
             groupBox1.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.ForeColor = SystemColors.Desktop;
-            groupBox1.Location = new Point(-1, 147);
+            groupBox1.Location = new Point(-1, 133);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(495, 667);
             groupBox1.TabIndex = 0;
@@ -105,6 +113,7 @@
             // txtBxLstNm
             // 
             txtBxLstNm.BackColor = SystemColors.Info;
+            txtBxLstNm.ForeColor = SystemColors.Highlight;
             txtBxLstNm.Location = new Point(291, 113);
             txtBxLstNm.Name = "txtBxLstNm";
             txtBxLstNm.Size = new Size(181, 32);
@@ -113,6 +122,7 @@
             // txtBxFrstNm
             // 
             txtBxFrstNm.BackColor = SystemColors.Info;
+            txtBxFrstNm.ForeColor = SystemColors.Highlight;
             txtBxFrstNm.Location = new Point(291, 83);
             txtBxFrstNm.Name = "txtBxFrstNm";
             txtBxFrstNm.Size = new Size(181, 32);
@@ -121,6 +131,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.ForeColor = SystemColors.Highlight;
             label4.Location = new Point(7, 117);
             label4.Name = "label4";
             label4.Size = new Size(105, 23);
@@ -130,6 +141,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.ForeColor = SystemColors.Highlight;
             label3.Location = new Point(7, 87);
             label3.Name = "label3";
             label3.Size = new Size(109, 23);
@@ -139,6 +151,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = SystemColors.Highlight;
             label2.Location = new Point(7, 57);
             label2.Name = "label2";
             label2.Size = new Size(190, 23);
@@ -148,6 +161,7 @@
             // txtBxAccNmbr
             // 
             txtBxAccNmbr.BackColor = SystemColors.Info;
+            txtBxAccNmbr.ForeColor = SystemColors.Highlight;
             txtBxAccNmbr.Location = new Point(291, 53);
             txtBxAccNmbr.Name = "txtBxAccNmbr";
             txtBxAccNmbr.Size = new Size(181, 32);
@@ -177,7 +191,7 @@
             groupBox2.Controls.Add(invcGrdView);
             groupBox2.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox2.ForeColor = SystemColors.Desktop;
-            groupBox2.Location = new Point(623, 147);
+            groupBox2.Location = new Point(623, 133);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(623, 667);
             groupBox2.TabIndex = 1;
@@ -223,6 +237,7 @@
             // txtPwrUsg
             // 
             txtPwrUsg.BackColor = SystemColors.Info;
+            txtPwrUsg.ForeColor = SystemColors.Highlight;
             txtPwrUsg.Location = new Point(273, 55);
             txtPwrUsg.Name = "txtPwrUsg";
             txtPwrUsg.Size = new Size(200, 32);
@@ -232,6 +247,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.ForeColor = SystemColors.Highlight;
             label6.Location = new Point(6, 89);
             label6.Name = "label6";
             label6.Size = new Size(121, 23);
@@ -241,6 +257,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.ForeColor = SystemColors.Highlight;
             label5.Location = new Point(6, 59);
             label5.Name = "label5";
             label5.Size = new Size(126, 23);
@@ -301,12 +318,87 @@
             btnclose.UseVisualStyleBackColor = false;
             btnclose.Click += btnclose_Click;
             // 
+            // groupBox3
+            // 
+            groupBox3.BackColor = SystemColors.Window;
+            groupBox3.Controls.Add(txtbAvgBill);
+            groupBox3.Controls.Add(txtbTtlUsg);
+            groupBox3.Controls.Add(txtbNoCstm);
+            groupBox3.Controls.Add(label9);
+            groupBox3.Controls.Add(label8);
+            groupBox3.Controls.Add(label7);
+            groupBox3.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox3.Location = new Point(290, 807);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(531, 166);
+            groupBox3.TabIndex = 5;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Statistics";
+            // 
+            // txtbAvgBill
+            // 
+            txtbAvgBill.BackColor = SystemColors.ControlLight;
+            txtbAvgBill.ForeColor = SystemColors.Highlight;
+            txtbAvgBill.Location = new Point(339, 126);
+            txtbAvgBill.Name = "txtbAvgBill";
+            txtbAvgBill.Size = new Size(181, 32);
+            txtbAvgBill.TabIndex = 9;
+            // 
+            // txtbTtlUsg
+            // 
+            txtbTtlUsg.BackColor = SystemColors.ControlLight;
+            txtbTtlUsg.ForeColor = SystemColors.Highlight;
+            txtbTtlUsg.Location = new Point(339, 96);
+            txtbTtlUsg.Name = "txtbTtlUsg";
+            txtbTtlUsg.Size = new Size(181, 32);
+            txtbTtlUsg.TabIndex = 8;
+            // 
+            // txtbNoCstm
+            // 
+            txtbNoCstm.BackColor = SystemColors.ControlLight;
+            txtbNoCstm.ForeColor = SystemColors.Highlight;
+            txtbNoCstm.Location = new Point(339, 66);
+            txtbNoCstm.Name = "txtbNoCstm";
+            txtbNoCstm.Size = new Size(181, 32);
+            txtbNoCstm.TabIndex = 7;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.ForeColor = SystemColors.Highlight;
+            label9.Location = new Point(6, 126);
+            label9.Name = "label9";
+            label9.Size = new Size(213, 23);
+            label9.TabIndex = 2;
+            label9.Text = "Average bill amount ($):";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.ForeColor = SystemColors.Highlight;
+            label8.Location = new Point(6, 96);
+            label8.Name = "label8";
+            label8.Size = new Size(237, 23);
+            label8.TabIndex = 1;
+            label8.Text = "Total number of kWh used:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = SystemColors.Highlight;
+            label7.Location = new Point(6, 66);
+            label7.Name = "label7";
+            label7.Size = new Size(283, 23);
+            label7.TabIndex = 0;
+            label7.Text = "Number of customers processed:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.blurBG;
-            ClientSize = new Size(1246, 827);
+            ClientSize = new Size(1246, 973);
+            Controls.Add(groupBox3);
             Controls.Add(btnclose);
             Controls.Add(clsBtn);
             Controls.Add(label1);
@@ -323,6 +415,8 @@
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)invcGrdView).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -351,5 +445,12 @@
         private Button btnAddInvc;
         private Button clsBtn;
         private Button btnclose;
+        private GroupBox groupBox3;
+        private Label label7;
+        private TextBox txtbAvgBill;
+        private TextBox txtbTtlUsg;
+        private TextBox txtbNoCstm;
+        private Label label9;
+        private Label label8;
     }
 }

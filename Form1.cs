@@ -21,7 +21,7 @@ namespace Lab_3
             InitializeComponent();
             populateCustomerGridView();
             populateInvoiceGridView();
-            //ResetStatistics();
+            updateStatistics();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace Lab_3
                 // ----------------- Updating statistics, gridView and reseting the form: -----------------
 
                 populateCustomerGridView();
-                //    updateStatistics();
+                updateStatistics();
                 ResetFields();
             }
         }
@@ -144,6 +144,9 @@ namespace Lab_3
             this.Close();
         }
 
+
+        // ---------------------------- Remove a customer from the DB: -----------------------------
+
         private void rmvCstmr_Click(object sender, EventArgs e)
         {
             var context = new CustomersBillsContext();
@@ -158,10 +161,14 @@ namespace Lab_3
                     context.SaveChanges();
                     populateCustomerGridView();
                     populateInvoiceGridView();
+                    updateStatistics();
                 }
             }
             context.Dispose();
         }
+
+
+        // ---------------------------- Remove an invoice from the list: ---------------------------
 
         private void rmvInvc_Click(object sender, EventArgs e)
         {
@@ -183,6 +190,7 @@ namespace Lab_3
                             context.SaveChanges();
                             context.Dispose();
                             populateInvoiceGridView();
+                            updateStatistics();
                         }
                     }
                 }
@@ -226,7 +234,8 @@ namespace Lab_3
             //context.Dispose();
         }
 
-        // -------------------------- Create and add an invoice to the DB: --------------------------
+        // -------------------------- Create and add an invoice to the DB: -------------------------
+
         private void btnAddInvc_Click(object sender, EventArgs e)
         {
             DateTime invDateTime = invDatePkr.Value;
@@ -258,6 +267,7 @@ namespace Lab_3
                     context.SaveChanges();
                     context.Dispose();
                     populateInvoiceGridView();
+                    updateStatistics();
                 }
                 else
                 {
@@ -268,10 +278,13 @@ namespace Lab_3
 
                 // --------------------- Updating statistics and reseting the form: ---------------------
 
-                //updateStatistics();
+                updateStatistics();
                 ResetFields();
             }
         }
+
+
+        // --------------- Check if the provided account number is positive integer: ---------------
 
         private void txtBxAccNmbr_TextChanged(object sender, EventArgs e)
         {
@@ -282,6 +295,9 @@ namespace Lab_3
             }
         }
 
+
+        // ---------------- Check if the provided power usage is positive decimal: ----------------
+
         private void txtPwrUsg_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtPwrUsg.Text, "[^0-9.]"))
@@ -290,5 +306,46 @@ namespace Lab_3
                 txtPwrUsg.Text = txtPwrUsg.Text.Remove(txtPwrUsg.Text.Length - 1);
             }
         }
+
+
+        // ------------------------------- Update statistics method: -------------------------------
+
+        private void updateStatistics()
+        {
+            int noOfCustomers = cstGrdView.RowCount;
+            txtbNoCstm.Text = noOfCustomers.ToString();
+
+            decimal totalUsage = 0;
+            decimal totalBillAmount = 0;
+
+            //------------------------------Update statistics method: -----------------------------
+
+            foreach (DataGridViewRow row in invcGrdView.Rows)
+            {
+                DataGridViewCell pwUsCell = row.Cells["PowerUsage"];
+                decimal cellPwrUsg = Convert.ToDecimal(pwUsCell.Value);
+                totalUsage += cellPwrUsg;
+
+                DataGridViewCell invcCell = row.Cells["InvoiceTotal"];
+                decimal cellInv = Convert.ToDecimal(invcCell.Value);
+                totalBillAmount += cellInv;
+            }
+
+            txtbTtlUsg.Text = totalUsage.ToString();
+            if (noOfCustomers > 0)
+                txtbAvgBill.Text = (totalBillAmount / noOfCustomers).ToString("C");
+            else
+                txtbAvgBill.Text = 0.ToString("C");
+        }
+
+
+        // -------------------------------- Reset Statistics method: --------------------------------
+
+        //private void ResetStatistics()
+        //{
+        //    txtbNoCstm.Text = "0";
+        //    txtbTtlUsg.Text = "0";
+        //    txtbAvgBill.Text = 0.ToString("C");
+        //}
     }
 }
