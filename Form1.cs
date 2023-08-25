@@ -236,7 +236,7 @@ namespace Lab_3
                     context.Invoices.Add(currentInvoice);
                     context.SaveChanges();
                     context.Dispose();
-                    currentInvoice.ToString();
+                    MessageBox.Show(currentInvoice.ToString());
                     populateInvoiceGridView();
                     updateStatistics();
                 }
@@ -284,6 +284,7 @@ namespace Lab_3
         private void updtCstmr_Click(object sender, EventArgs e)
         {
             txtBxAccNmbr.Enabled = false;
+            txtBxAccNmbr.Text = "";
             string fName = txtBxFrstNm.Text;
             string lName = txtBxLstNm.Text;
 

@@ -55,7 +55,7 @@ namespace Lab_3.Models
         public override string ToString()
         {
             string billString = CalculateCharge().ToString("C");
-            return $"Add account no. {AccountNumber} with a bill of {billString}";
+            return $"Add invoice for account no. {AccountNumber} with a bill of {billString}";
         }
     }
 }
